@@ -20,7 +20,7 @@ def nlp(input_file, output_file, delimiter='\t', header=0, key='document', label
     result = tokenize(doc)
     if vec==True:
         model = Word2Vec(result, sg=1)
-        model.save("word2vec.model")
+        model.wv.save_word2vec_format('word2vec.txt', binary=False)
     lab = tuple(data[label])
     f = open(output_file, 'w')
     for i in range(len(lab)):
