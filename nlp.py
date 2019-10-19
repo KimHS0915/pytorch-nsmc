@@ -22,13 +22,11 @@ def nlp(input_file, output_file, delimiter='\t', header=0, key='document', label
         model = Word2Vec(result, sg=1)
         model.wv.save_word2vec_format('word2vec.txt', binary=False)
     lab = tuple(data[label])
-    f = open(output_file, 'w')
-    for i in range(len(lab)):
-        dic = {'document':result[i], 'label':lab[i]}
-        j = json.dumps(dic)
-        f.write(j)
-        f.write('\n')
-    f.close()
-
+    with open(output_file, 'w') as f:
+        for i in range(len(lab)):
+            dic = {'document':result[i], 'label':lab[i]}
+            json.dumps(dic, f)
+            f.write('\n')
+         
 nlp('ratings_train.txt', 'ratings_train.json', vec=True)
 nlp('ratings_test.txt', 'ratings_test.json')
