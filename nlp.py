@@ -24,8 +24,10 @@ def nlp(input_file, output_file, delimiter='\t', header=0, key='document', label
     lab = tuple(data[label])
     with open(output_file, 'w') as f:
         for i in range(len(lab)):
-            dic = {'document':result[i], 'label':lab[i]}
-            json.dumps(dic, f)
+            if result[i]:
+                dic = {'document':result[i], 'label':lab[i]}
+            j = json.dumps(dic)
+            f.write(j)
             f.write('\n')
          
 nlp('ratings_train.txt', 'ratings_train.json', vec=True)
