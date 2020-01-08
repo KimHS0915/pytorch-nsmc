@@ -12,6 +12,8 @@ Dataset - [Naver sentiment movie corpus v1.0](https://github.com/e9t/nsmc)
 - ratings_test.txt : 50K reviews
 - ratings_train.txt : 150K reviews
 
-Result(acc)  
-RNN : 50.68%
-LSTM : 86.24%
+Result
+
+||RNN|LSTM|
+|:----|:---:|:---:|
+|Acc| 50.68% | 86.24%|
